@@ -1,3 +1,5 @@
+# :D
+
 def calcular_media_notas(lista_avaliacoes):
     filmes_notas = {}
     for avaliacao in lista_avaliacoes:
@@ -52,7 +54,8 @@ for _ in range(tot_aval):
     filme = aval_temp[2]
     nota = int(aval_temp[3])
 
-    avaliacao = {'avaliador': avaliador, 'categoria': categoria, 'filme': filme, 'nota': nota}
+    avaliacao = {'avaliador': avaliador,
+                 'categoria': categoria, 'filme': filme, 'nota': nota}
     avaliacoes.append(avaliacao)
     filmes_avaliados.append(filme)
 
@@ -64,18 +67,22 @@ vencedores_categorias = {}
 categorias_simples = ['filme que causou mais bocejos', 'filme que foi mais pausado', 'filme que mais revirou olhos',
                       'filme que não gerou discussão nas redes sociais', 'enredo mais sem noção']
 for categoria in categorias_simples:
-    filmes_categoria = [avaliacao['filme'] for avaliacao in avaliacoes if avaliacao['categoria'] == categoria]
-    medias_categoria = {filme: medias_filmes[filme] for filme in filmes_categoria}
+    filmes_categoria = [avaliacao['filme']
+                        for avaliacao in avaliacoes if avaliacao['categoria'] == categoria]
+    medias_categoria = {filme: medias_filmes[filme]
+                        for filme in filmes_categoria}
     vencedor_categoria = encontrar_vencedor_categoria(medias_categoria)
     vencedores_categorias[categoria] = vencedor_categoria
 
 # Determinação do vencedor do Prêmio Pior Filme do Ano
-medias_categorias = {categoria: medias_filmes[vencedor] for categoria, vencedor in vencedores_categorias.items()}
+medias_categorias = {categoria: medias_filmes[vencedor]
+                     for categoria, vencedor in vencedores_categorias.items()}
 vencedor_pior_filme = encontrar_vencedor_pior_filme(medias_categorias)
 vencedores_categorias['prêmio pior filme do ano'] = vencedor_pior_filme
 
 # Determinação do vencedor do Prêmio "Não Merecia Estar Aqui"
-vencedor_nao_merecia = encontrar_vencedor_nao_merecia(medias_categorias, filmes_avaliados)
+vencedor_nao_merecia = encontrar_vencedor_nao_merecia(
+    medias_categorias, filmes_avaliados)
 vencedores_categorias['prêmio não merecia estar aqui'] = vencedor_nao_merecia
 
 # Impressão dos resultados
@@ -95,4 +102,3 @@ if vencedores_categorias['prêmio não merecia estar aqui'] == "sem ganhadores":
 else:
     for vencedor in vencedores_categorias['prêmio não merecia estar aqui']:
         print(f"- {vencedor}")
-
