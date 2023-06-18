@@ -1,3 +1,5 @@
+#Árvora de escolhas pra de mudar pra alguma distribuição Linux.
+
 print('Este é um sistema que irá te ajudar a escolher a sua próxima Distribuição Linux. Responda a algumas poucas perguntas para ter uma recomendação.')
 
 print('Seu SO anterior era Linux?')

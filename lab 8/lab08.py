@@ -1,3 +1,5 @@
+#Competição para pior filme do ano.
+
 tot_fil = int(input())
 filmes = []
 for _ in range(tot_fil):
