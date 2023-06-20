@@ -9,6 +9,9 @@ class Player:
 
     def tomar_dano(self, dano):
         self.vida -= dano
+        if self.vida <= 0:
+            self.vida = 0
+        
         return self.vida
 
     def recuperar_vida(self):
@@ -19,8 +22,18 @@ class Player:
         else:
             self.vida = self.vida_inicial
 
-    def recuperar_flechas(self, dicionario: dict):
-        self.flechas.update(dicionario)
+    def recuperar_flechas(self, flechas_usadas: dict):
+        for flecha in flechas_usadas:
+            self.flechas[flecha] += flechas_usadas[flecha]
+    
+    def flechas_restantes(self):
+        return sum(self.flechas.values())
+    
+    def usar_flechas(self, flecha):
+        if self.flechas[flecha] > 0:
+            self.flechas[flecha] -= 1
+        
+
 
 
 class Monster:
@@ -35,8 +48,7 @@ class Monster:
         self.vida_monstro -= dano
         return self.vida_monstro
 
-  # def monstro_ataca_aloy(self, lista: list, aloy) -> None:
-      # aloy.vida -= sum(lista)
+  
 
 
 def ler_aloy():
@@ -49,6 +61,7 @@ def ler_aloy():
     # Esse loop serve pra transformar os dados da lista em um dicionário onde os tipos de flecha são a chave e sua quantidade são os valores.
     for i in range(0, len(flechas_temp), 2):
         flechas[flechas_temp[i]] = int(flechas_temp[i+1])
+        
 
     return Player(vida_aloy, flechas)
 
@@ -95,28 +108,39 @@ def combate(lista_monstro: list)-> tuple:
     monstro = lista_monstro[monstro_atacado]
     lista_partes = monstro.partes
     info_parte = lista_partes[parte]
-    criticos_acertados = 0
+    
 
     if info_parte[0] == flecha_usada or info_parte[0] == 'todas':
         if info_parte[2] == ponto:
             monstro.vida_monstro -= info_parte[1]
-            criticos_acertados += 1
-            return monstro.vida_monstro, monstro_atacado, flecha_usada, criticos_acertados, ponto
+            
+            return monstro.vida_monstro, monstro_atacado, flecha_usada, True, ponto
         else:
             D = info_parte[1] - ((abs((ponto[0] - info_parte[2][0]))) +
                                  (abs((ponto[1] - info_parte[2][1]))))
             if D > 0:
                 monstro.vida_monstro -= D
-                return monstro.vida_monstro, monstro_atacado, flecha_usada, None, None
+                return monstro.vida_monstro, monstro_atacado, flecha_usada, False, ponto
             else:
-                return monstro.vida_monstro, 0, flecha_usada , None, None
+                return monstro.vida_monstro, monstro_atacado, flecha_usada , False, ponto
 
     elif info_parte[0] != flecha_usada:
-        if D > 0:
-            monstro.vida_monstro -= D//2
-            return monstro.vida_monstro, monstro_atacado, flecha_usada, None, None
-        else:
-            return monstro.vida_monstro, 0, flecha_usada, None, None
+        if info_parte[2] == ponto:
+            D = info_parte[1] - ((abs((ponto[0] - info_parte[2][0]))) +
+                                    (abs((ponto[1] - info_parte[2][1]))))
+            if D > 0:
+                monstro.vida_monstro -= D//2
+                return monstro.vida_monstro, monstro_atacado, flecha_usada, True, ponto
+            else:
+                return monstro.vida_monstro, monstro_atacado, flecha_usada, False , ponto
+        else: 
+            D = info_parte[1] - ((abs((ponto[0] - info_parte[2][0]))) +
+                                    (abs((ponto[1] - info_parte[2][1]))))
+            if D > 0:
+                monstro.vida_monstro -= D//2
+                return monstro.vida_monstro, monstro_atacado, flecha_usada, False, ponto
+            else:
+                return monstro.vida_monstro, monstro_atacado, flecha_usada, False, ponto
 
 
 def monstro_ataca_aloy(lista_monstro):
@@ -130,60 +154,92 @@ def monstro_ataca_aloy(lista_monstro):
 
 def main():
     aloy = ler_aloy()  # Criação da instância aloy da classe Player.
-    total_monstros = int(input())  # Número total de monstros.
-    total_flechas = sum(aloy.flechas.values())
-    criticos_acertados = 0
-    ponto = 0
-    quantidade_flechas_usadas = {}
-
-    lista_monstros = le_monstros_rodada()  # lista de monstros da rodada
-    # aloy.tomar_dano()
-    i = 0
-    while aloy.vida > 0 and total_flechas > 0 and i != total_monstros:
+    flechas_copia = aloy.flechas.copy()
+    monstros_restantes = int(input())  # Número total de monstros.
     
-        vida_monstro, monstro_atacado, flecha_usada, criticos_acertados, ponto = combate(
-            lista_monstros)
-        if flecha_usada not in quantidade_flechas_usadas:
-            quantidade_flechas_usadas[flecha_usada] = 1
-        else:
-            quantidade_flechas_usadas[flecha_usada] += 1
-        print(f'Combate {i}, vida = {aloy.vida}')
-        if vida_monstro <= 0:
-            print(f'Máquina {monstro_atacado} derrotada')
-
+    ponto = 0
+    
+    rodada = -1
+    while True:
         
-
-        if i % 2 == 0 and i != 0:
-            dano_monstros = monstro_ataca_aloy(lista_monstros)
-            aloy.tomar_dano(dano_monstros)
+        lista_monstros = le_monstros_rodada()  # lista de monstros da rodada
+        rodada += 1
+        quantidade_flechas_usadas = {}
+        turno = 0
+        
+        dict_criticos = {}
+        while aloy.vida > 0 and aloy.flechas_restantes() > 0:
+        
+            vida_monstro, monstro_atacado, flecha_usada, foi_critico, ponto = combate(
+                lista_monstros)
+            if foi_critico == True:
+                if monstro_atacado not in dict_criticos:
+                    dict_criticos[monstro_atacado] = dict()
+                if ponto not in dict_criticos[monstro_atacado]:
+                    dict_criticos[monstro_atacado][ponto] = 1
+                elif ponto in dict_criticos[monstro_atacado]:
+                    dict_criticos[monstro_atacado][ponto] += 1
             
 
-        for maquina in lista_monstros:
-            if maquina.vida_monstro > 0:
-                total_dano += maquina.ataque
-        i += 1
+            aloy.usar_flechas(flecha_usada)
+            aloy.flechas_restantes()
+
+            if flecha_usada not in quantidade_flechas_usadas:
+                quantidade_flechas_usadas[flecha_usada] = 1
+            else:
+                quantidade_flechas_usadas[flecha_usada] += 1
+            
+            if turno == 0:
+                print(f'Combate {rodada}, vida = {aloy.vida}')
+
+            if lista_monstros[monstro_atacado].vida_monstro <= 0:
+                print(f'Máquina {monstro_atacado} derrotada')
+
+            if (turno+1) % 3 ==  0:
+                dano_monstros = monstro_ataca_aloy(lista_monstros)
+                aloy.tomar_dano(dano_monstros)
+                
+            lista_monstros_mortos = []
+            for maquina in lista_monstros:
+                if maquina.vida_monstro <= 0:
+                    lista_monstros_mortos.append(maquina)
+                    
+            if len(lista_monstros_mortos) == len(lista_monstros):
+                print(f'Vida após o combate = {aloy.vida}')
+                aloy.recuperar_vida()
+                print('Flechas utilizadas:')
+                for k, v in quantidade_flechas_usadas.items():
+                    print(f'-{k}: {v}/{flechas_copia[k]}')
+
+
+                if len(dict_criticos.values()) != 0: 
+                    print('Críticos acertados:')
+                    for monstro in dict_criticos.keys():
+                        print(f'Máquina {monstro}:')
+                        for ponto in dict_criticos[monstro_atacado].keys():
+                            print(f'- {ponto}: {dict_criticos[monstro_atacado][ponto]}x')
+                            
+                
+                aloy.flechas = flechas_copia.copy()
+                monstros_restantes -= len(lista_monstros_mortos)
+                break
+                        
+
+            turno += 1
+
+        if aloy.vida <= 0 or aloy.flechas_restantes() == 0 or monstros_restantes == 0:
+            break
         
-        aloy.recuperar_vida()
+
+    if aloy.vida <= 0:
         print(f'Vida após o combate = {aloy.vida}')
-        print('Flechas utilizadas:')
-        for k, v in quantidade_flechas_usadas.items():
-            print(f'-{k}: {v}/{aloy.flechas[flecha_usada]}')
-        if criticos_acertados != None:
-            print('Críticos acertados:')
-            print(f'Máquina {monstro_atacado}')
-            print(f'- {ponto}: {criticos_acertados}x')
-        aloy.recuperar_flechas(quantidade_flechas_usadas)
-        
-
-        
-
-    if aloy.vida < 0:
         print('Aloy foi derrotada em combate e não retornará a tribo.')
 
-    if total_flechas < 0:
+    elif aloy.flechas_restantes() <= 0:
+        print(f'Vida após o combate = {aloy.vida}')
         print('Aloy ficou sem flechas e recomeçará sua missão mais preparada.')
 
-    if i == total_monstros:
+    else:
         print('Aloy provou seu valor e voltou para sua tribo.')
 
 
