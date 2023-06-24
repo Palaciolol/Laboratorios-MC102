@@ -1,0 +1,4 @@
+#! /bin/fish
+for i in (seq -w 1 (math (ls -1 tests/ | wc -l)/2))
+    python3 $argv[1] < tests/$i.in | diff -s --color - tests/$i.out
+end 

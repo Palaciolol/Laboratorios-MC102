@@ -209,7 +209,7 @@ def main():
                 aloy.recuperar_vida()
                 print('Flechas utilizadas:')
                 for k, v in quantidade_flechas_usadas.items():
-                    print(f'-{k}: {v}/{flechas_copia[k]}')
+                    print(f'- {k}: {v}/{flechas_copia[k]}')
 
 
                 if len(dict_criticos.values()) != 0: 
