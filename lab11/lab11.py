@@ -1,6 +1,7 @@
 # Um herói e uma missão.
 
 class Player:
+
     def __init__(self, vida, ataque, x, y) -> None:
         self.vida = vida
         self.ataque = ataque
@@ -8,19 +9,40 @@ class Player:
         self.y = y
 
     def tomar_dano(self, dano):
+        '''
+        Função que o link toma dano de um monstro
+
+        Parâmetros:
+        -dano: dano que o link vai receber
+        
+        '''
+
         self.vida -= dano
         if self.vida <= 0:
             self.vida = 0
 
-        
-
     def descer_tudo(self, mat):
+        '''Função em que o link se move pra baixo na matriz
+        atualiza a matriz com a posição do link
+        atualiza a posição do link
+        '''
         mat[self.x][self.y] = "."
         mat[self.x + 1][self.y] = "P"
         self.x = self.x + 1
 
     def mover(self, mat):
-        """Função que move o link"""
+        '''
+        Função que o link se move uma vez que ele está na última linha da matriz
+        
+        Parâmetros:
+        mat: matriz 
+
+        atualiza a matriz com a nova posição do link
+        atualiza a posição do link depois que ele se move
+        
+        
+        '''
+
 
         if self.x % 2 == 0:
             if self.y == 0:
@@ -44,6 +66,12 @@ class Player:
                 self.y = self.y + 1
 
     def buffar(self, tipo, buff):
+        '''Função que o link adquiri novos status de vida ou de dano
+        Parâmetros:
+        -tipo: tipo do buff que o link vai receber
+        -buff: valor numérico do status recebido
+        
+        '''
         if tipo == "ataque":
             if self.ataque + buff <= 0:
                 self.ataque = 1
@@ -55,6 +83,7 @@ class Player:
 
 
 class Monster:
+
     def __init__(self, vida, ataque, tipo, x, y):
         self.vida = vida
         self.ataque = ataque
@@ -63,6 +92,7 @@ class Monster:
         self.y = y
 
     def mover(self, mat):
+        '''Função que move os monstros, ela verifica se ele pode se mover na matriz e se ele tem vida pra isso, depois ele se move normalmente'''
         if self.tipo == "U" and self.vida > 0:
             if self.x - 1 >= 0:
                 if (
@@ -151,11 +181,13 @@ class Monster:
                 mat[self.x][self.y] = self.tipo
 
     def colocar_na_matriz(self, mat):
+        '''Função que coloca os monstros na matriz se a posição a ser colocada for diferentes da saída da masmorra , do link e do link morto'''
         if mat[self.x][self.y] != "*" and mat[self.x][self.y] != 'P' and mat[self.x][self.y] != 'X':
             mat[self.x][self.y] = self.tipo
 
 
 class Item:
+    
     def __init__(self, nome, tipo, x, y, status,usado = False) -> None:
         self.nome = nome
         self.tipo = tipo
@@ -165,6 +197,7 @@ class Item:
         self.usado = usado
 
     def inserir_na_matriz(self, mat):
+        '''Função que insere os itens na matriz'''
         mat[self.x][self.y] = self.tipo
 
 
@@ -183,7 +216,9 @@ def imprime_masmorra(mat: list[list[str]]) -> None:
 
 
 def ler_link():
-    """Função que lê a vida de Link e seus pontos de ataque"""
+    """Função que lê a vida de Link e seus pontos de ataque
+    
+    """
     entrada_atributos = input()
     vida_link, ataque_link = map(int, entrada_atributos.split())
 
@@ -191,7 +226,12 @@ def ler_link():
 
 
 def ler_monstros():
-    """Função que lê os monstros"""
+    '''
+    Função que lê os monstros e transforma cada um deles em uma instância da classe Monster 
+    
+    Retorno:
+    -lista de monstros
+    '''
     lista_monstros = []
     tot_monstros = int(input())
 
@@ -211,7 +251,10 @@ def ler_monstros():
 
 
 def ler_objetos():
-    """Função que lê os objetos"""
+    """Função que lê os objetos e cria uma instância da classe Item
+    Retorno:
+    -lista de objetos
+    """
     lista_objetos = []
     tot_objetos = int(input())
 
@@ -231,13 +274,29 @@ def ler_objetos():
 
 
 def link_ataca(ataque: int, monstro: Monster):
-    """Função que o link ataca um monstro"""
+    """Função que o link ataca um monstro
+    
+    Parâmetros:
+    -ataque: dano que vai ser aplicado no monstro
+    -monstro: monstro atacado
+    
+    """
 
     monstro.vida -= ataque
 
 
 def pegar_item(vida: int, ataque: int, item: Item):
-    """Função que o link pega um item"""
+    """Função que o link pega um item
+    
+    Parâmetros:
+    -vida: vida do link
+    -ataque: ataque do link
+    -item: item que o link pegou
+
+    Retorno:
+    - tipo de buff que ele recebe, valor numérico do buff
+    
+    """
     if item.tipo == "d":
         return "ataque", item.status
     
@@ -245,7 +304,7 @@ def pegar_item(vida: int, ataque: int, item: Item):
         return "vida", item.status
 
 def main():
-    vida_link, ataque_link = ler_link()
+    vida_link, ataque_link = ler_link()  
 
     entrada_masmorra = input()
     num_linhas, num_colunas = map(int, entrada_masmorra.split())

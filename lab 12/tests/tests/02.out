@@ -1,0 +1,54 @@
+Jogador 1
+Mão: QC QE 10P 7E 2P AC
+Jogador 2
+Mão: 8E 6P 6C 5C 3E 3O
+Jogador 3
+Mão: KP QP 10E 6E 4C 2C
+Jogador 4
+Mão: KE JO 9O 4O 3C AO
+Pilha:
+[Jogador 1] 1 carta(s) A
+Pilha: AC
+[Jogador 2] 2 carta(s) 3
+Pilha: AC 3O 3E
+[Jogador 3] 1 carta(s) 4
+Pilha: AC 3O 3E 4C
+[Jogador 4] 1 carta(s) 4
+Pilha: AC 3O 3E 4C 4O
+[Jogador 1] 1 carta(s) 7
+Pilha: AC 3O 3E 4C 4O 7E
+[Jogador 2] 1 carta(s) 8
+Pilha: AC 3O 3E 4C 4O 7E 8E
+[Jogador 3] 1 carta(s) 10
+Pilha: AC 3O 3E 4C 4O 7E 8E 10E
+[Jogador 4] 1 carta(s) J
+Pilha: AC 3O 3E 4C 4O 7E 8E 10E JO
+[Jogador 1] 2 carta(s) Q
+Pilha: AC 3O 3E 4C 4O 7E 8E 10E JO QE QC
+[Jogador 2] 1 carta(s) Q
+Pilha: AC 3O 3E 4C 4O 7E 8E 10E JO QE QC 5C
+Jogador 3 duvidou.
+Jogador 1
+Mão: 10P 2P
+Jogador 2
+Mão: QC QE JO 10E 8E 7E 6P 6C 5C 4C 4O 3E 3O AC
+Jogador 3
+Mão: KP QP 6E 2C
+Jogador 4
+Mão: KE 9O 3C AO
+Pilha:
+[Jogador 3] 1 carta(s) 2
+Pilha: 2C
+[Jogador 4] 1 carta(s) 3
+Pilha: 2C 3C
+[Jogador 1] 1 carta(s) 10
+Pilha: 2C 3C 10P
+[Jogador 2] 1 carta(s) 10
+Pilha: 2C 3C 10P 10E
+[Jogador 3] 1 carta(s) Q
+Pilha: 2C 3C 10P 10E QP
+[Jogador 4] 1 carta(s) K
+Pilha: 2C 3C 10P 10E QP KE
+[Jogador 1] 1 carta(s) K
+Pilha: 2C 3C 10P 10E QP KE 2P
+Jogador 1 é o vencedor!

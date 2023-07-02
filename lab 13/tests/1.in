@@ -1,0 +1,5 @@
+sample.pgm
+3
+bucket 25 5 4 0
+bucket 127 5 4 2
+save

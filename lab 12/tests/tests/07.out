@@ -1,0 +1,62 @@
+Jogador 1
+Mão: 9E 7E 7O 6C 5P 3C 2C
+Jogador 2
+Mão: 9C 8P 4P 3P 2P AC
+Jogador 3
+Mão: 9P 8C 7P 6E 6O 5O AO
+Jogador 4
+Mão: 8E 7C 4C 4E 4O 3E 3O
+Jogador 5
+Mão: 9O 8O 6P 5C 5E 2E
+Pilha:
+[Jogador 1] 1 carta(s) 2
+Pilha: 2C
+[Jogador 2] 1 carta(s) 2
+Pilha: 2C 2P
+[Jogador 3] 1 carta(s) 5
+Pilha: 2C 2P 5O
+[Jogador 4] 1 carta(s) 7
+Pilha: 2C 2P 5O 7C
+[Jogador 5] 1 carta(s) 8
+Pilha: 2C 2P 5O 7C 8O
+[Jogador 1] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E
+[Jogador 2] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C
+[Jogador 3] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P
+[Jogador 4] 2 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P 3O 3E
+[Jogador 5] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P 3O 3E 9O
+[Jogador 1] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P 3O 3E 9O 3C
+[Jogador 2] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P 3O 3E 9O 3C AC
+[Jogador 3] 1 carta(s) 9
+Pilha: 2C 2P 5O 7C 8O 9E 9C 9P 3O 3E 9O 3C AC AO
+Jogador 4 duvidou.
+Jogador 1
+Mão: 7E 7O 6C 5P
+Jogador 2
+Mão: 8P 4P 3P
+Jogador 3
+Mão: 9P 9C 9E 9O 8C 8O 7P 7C 6E 6O 5O 3C 3E 3O 2P 2C AC AO
+Jogador 4
+Mão: 8E 4C 4E 4O
+Jogador 5
+Mão: 6P 5C 5E 2E
+Pilha:
+[Jogador 4] 3 carta(s) 4
+Pilha: 4O 4E 4C
+[Jogador 5] 2 carta(s) 5
+Pilha: 4O 4E 4C 5E 5C
+[Jogador 1] 1 carta(s) 5
+Pilha: 4O 4E 4C 5E 5C 5P
+[Jogador 2] 1 carta(s) 8
+Pilha: 4O 4E 4C 5E 5C 5P 8P
+[Jogador 3] 2 carta(s) 8
+Pilha: 4O 4E 4C 5E 5C 5P 8P 8O 8C
+[Jogador 4] 1 carta(s) 8
+Pilha: 4O 4E 4C 5E 5C 5P 8P 8O 8C 8E
+Jogador 4 é o vencedor!

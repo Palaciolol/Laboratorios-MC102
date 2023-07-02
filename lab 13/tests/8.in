@@ -1,0 +1,11 @@
+eye.pgm
+9
+bucket 200 20 25 40
+bucket 200 15 15 39
+bucket 100 15 79 9
+bucket 100 15 22 17
+bucket 100 15 42 8
+bucket 100 20 93 26
+bucket 25 20 5 4
+bucket 25 50 96 2
+save

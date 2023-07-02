@@ -1,0 +1,106 @@
+Jogador 1
+Mão: KP KC KE 10E 9P 8P 7C 5E 4E 4O 2P
+Jogador 2
+Mão: JP 9O 8E 7P 6O 5P 5C 4P 4C 3E
+Jogador 3
+Mão: KO JC 10C 10O 9C 8O 6E 3P 3O 2E
+Pilha:
+[Jogador 1] 1 carta(s) 2
+Pilha: 2P
+[Jogador 2] 1 carta(s) 3
+Pilha: 2P 3E
+[Jogador 3] 2 carta(s) 3
+Pilha: 2P 3E 3O 3P
+[Jogador 1] 2 carta(s) 4
+Pilha: 2P 3E 3O 3P 4O 4E
+[Jogador 2] 2 carta(s) 4
+Pilha: 2P 3E 3O 3P 4O 4E 4C 4P
+[Jogador 3] 1 carta(s) 6
+Pilha: 2P 3E 3O 3P 4O 4E 4C 4P 6E
+[Jogador 1] 1 carta(s) 7
+Pilha: 2P 3E 3O 3P 4O 4E 4C 4P 6E 7C
+Jogador 2 duvidou.
+Jogador 1
+Mão: KP KC KE 10E 9P 8P 5E
+Jogador 2
+Mão: JP 9O 8E 7P 7C 6E 6O 5P 5C 4P 4C 4E 4O 3P 3E 3O 2P
+Jogador 3
+Mão: KO JC 10C 10O 9C 8O 2E
+Pilha:
+[Jogador 2] 1 carta(s) 2
+Pilha: 2P
+[Jogador 3] 1 carta(s) 2
+Pilha: 2P 2E
+[Jogador 1] 1 carta(s) 5
+Pilha: 2P 2E 5E
+[Jogador 2] 2 carta(s) 5
+Pilha: 2P 2E 5E 5C 5P
+[Jogador 3] 1 carta(s) 8
+Pilha: 2P 2E 5E 5C 5P 8O
+[Jogador 1] 1 carta(s) 8
+Pilha: 2P 2E 5E 5C 5P 8O 8P
+[Jogador 2] 1 carta(s) 8
+Pilha: 2P 2E 5E 5C 5P 8O 8P 8E
+Jogador 3 duvidou.
+Jogador 1
+Mão: KP KC KE 10E 9P
+Jogador 2
+Mão: JP 9O 7P 7C 6E 6O 4P 4C 4E 4O 3P 3E 3O
+Jogador 3
+Mão: KO JC 10C 10O 9C 8P 8E 8O 5P 5C 5E 2P 2E
+Pilha:
+[Jogador 3] 2 carta(s) 2
+Pilha: 2E 2P
+[Jogador 1] 1 carta(s) 9
+Pilha: 2E 2P 9P
+[Jogador 2] 1 carta(s) 9
+Pilha: 2E 2P 9P 9O
+[Jogador 3] 1 carta(s) 9
+Pilha: 2E 2P 9P 9O 9C
+[Jogador 1] 1 carta(s) 10
+Pilha: 2E 2P 9P 9O 9C 10E
+[Jogador 2] 1 carta(s) J
+Pilha: 2E 2P 9P 9O 9C 10E JP
+[Jogador 3] 1 carta(s) J
+Pilha: 2E 2P 9P 9O 9C 10E JP JC
+Jogador 1 duvidou.
+Jogador 1
+Mão: KP KC KE JP JC 10E 9P 9C 9O 2P 2E
+Jogador 2
+Mão: 7P 7C 6E 6O 4P 4C 4E 4O 3P 3E 3O
+Jogador 3
+Mão: KO 10C 10O 8P 8E 8O 5P 5C 5E
+Pilha:
+[Jogador 1] 2 carta(s) 2
+Pilha: 2E 2P
+[Jogador 2] 3 carta(s) 3
+Pilha: 2E 2P 3O 3E 3P
+[Jogador 3] 3 carta(s) 5
+Pilha: 2E 2P 3O 3E 3P 5E 5C 5P
+[Jogador 1] 3 carta(s) 9
+Pilha: 2E 2P 3O 3E 3P 5E 5C 5P 9O 9C 9P
+[Jogador 2] 4 carta(s) 9
+Pilha: 2E 2P 3O 3E 3P 5E 5C 5P 9O 9C 9P 4O 4E 4C 4P
+[Jogador 3] 2 carta(s) 10
+Pilha: 2E 2P 3O 3E 3P 5E 5C 5P 9O 9C 9P 4O 4E 4C 4P 10O 10C
+[Jogador 1] 1 carta(s) 10
+Pilha: 2E 2P 3O 3E 3P 5E 5C 5P 9O 9C 9P 4O 4E 4C 4P 10O 10C 10E
+Jogador 2 duvidou.
+Jogador 1
+Mão: KP KC KE JP JC
+Jogador 2
+Mão: 10C 10E 10O 9P 9C 9O 7P 7C 6E 6O 5P 5C 5E 4P 4C 4E 4O 3P 3E 3O 2P 2E
+Jogador 3
+Mão: KO 8P 8E 8O
+Pilha:
+[Jogador 2] 2 carta(s) 2
+Pilha: 2E 2P
+[Jogador 3] 3 carta(s) 8
+Pilha: 2E 2P 8O 8E 8P
+[Jogador 1] 2 carta(s) J
+Pilha: 2E 2P 8O 8E 8P JC JP
+[Jogador 2] 3 carta(s) J
+Pilha: 2E 2P 8O 8E 8P JC JP 3O 3E 3P
+[Jogador 3] 1 carta(s) K
+Pilha: 2E 2P 8O 8E 8P JC JP 3O 3E 3P KO
+Jogador 3 é o vencedor!

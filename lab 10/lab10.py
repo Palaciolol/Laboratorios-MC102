@@ -7,7 +7,16 @@ class Player:
         self.vida = vida
         self.flechas = flechas
 
-    def tomar_dano(self, dano):
+    def tomar_dano(self, dano: int):
+        '''
+        Recebe o dano que a aloy vai receber e o aplica
+        
+        Parâmentro: 
+        - dano: dano recebido
+
+        Retorno: 
+        - nova vida da Aloy após tomar o dano
+        '''
         self.vida -= dano
         if self.vida <= 0:
             self.vida = 0
@@ -15,21 +24,43 @@ class Player:
         return self.vida
 
     def recuperar_vida(self):
-
-        if self.vida + self.vida_inicial*0.5 <= self.vida_inicial:
-            self.vida += self.vida_inicial*0.5
+        '''
+        Recupera a vida da aloy a partir da vida atual dela
+        
+        
+        '''
+        if self.vida + self.vida_inicial // 2 <= self.vida_inicial:
+            self.vida += self.vida_inicial // 2
 
         else:
             self.vida = self.vida_inicial
 
     def recuperar_flechas(self, flechas_usadas: dict):
+        '''
+        Recebe as flechas que a aloy usou e as recupera
+
+        Parâmetro: 
+        -flechas_usadas: flechas que ela usou e deve recuperar após o combate
+        
+        '''
         for flecha in flechas_usadas:
             self.flechas[flecha] += flechas_usadas[flecha]
     
     def flechas_restantes(self):
+        '''
+        Retorno:
+        - Soma de todas as flechas disponíveis da aloy
+        '''
         return sum(self.flechas.values())
     
     def usar_flechas(self, flecha):
+        '''
+        Recebe a flecha que a aloy usou no seu ataque e a usa
+
+        Parâmetros:
+        -flecha: flecha que a aloy usou
+        
+        '''
         if self.flechas[flecha] > 0:
             self.flechas[flecha] -= 1
         
@@ -38,13 +69,22 @@ class Player:
 
 class Monster:
 
-    def __init__(self, vida_monstro, ataque, num_partes, partes=None):
+    def __init__(self, vida_monstro, ataque, num_partes, partes):
         self.vida_monstro = vida_monstro
         self.ataque = ataque
         self.num_partes = num_partes
         self.partes = partes
 
     def tomar_dano(self,  dano: int) -> None:
+        '''
+        Recebe o dano que o monstro vai receber e o aplica
+        
+        Parâmetros:
+        -dano: dano que o monstro vai receber
+
+        Retorno:
+        - vida do monstro depois de receber dano
+        '''
         self.vida_monstro -= dano
         return self.vida_monstro
 
@@ -53,7 +93,7 @@ class Monster:
 
 def ler_aloy():
     '''Função que lê a vida da aloy e suas flechas'''
-    vida_aloy = int(input())
+    vida_aloy = int(input()) #Recebe a vida da aloy como inteiro
     # Recebe a entrada dos tipos de flecha e suas quantidades e guarda em uma lista
     flechas_temp = input().split()
     flechas = {}
@@ -66,11 +106,17 @@ def ler_aloy():
     return Player(vida_aloy, flechas)
 
 
-def le_monstros_rodada() -> None:
-    '''Função que lê os monstros por rodada e adiciona eles em uma lista'''
+def le_monstros_rodada() -> list[Monster]:
+    '''
+    
+    Função que lê os monstros por rodada e adiciona eles em uma lista
+    
+    Retorno:
+    - lista dos monstros da rodada
+    '''
 
     lista_monstros = []
-    monstros_por_rodada = int(input())
+    monstros_por_rodada = int(input())  #Recebe a quantidade de monstros que a aloy vai batalhar na rodada.
 
     for _ in range(monstros_por_rodada):
         # Recebe a vida, o dano e a quantidade de partes do monstro.
@@ -85,24 +131,39 @@ def le_monstros_rodada() -> None:
     return lista_monstros
 
 
-def ler_partes_monstro(num_partes: int) -> list:
+def ler_partes_monstro(num_partes: int) -> dict[str, tuple[str, int, tuple[int ,int]]]:
     '''Função que lê as partes dos monstros e adiciona em um dicionário'''
 
     dict_partes = {}
     for _ in range(num_partes):
 
-        entrada_parte = input().split(', ')
+        entrada_parte = input().split(', ') #Recebe as partes do monstro.
 
-        dict_partes[entrada_parte[0]] = [entrada_parte[1], int(
-            entrada_parte[2]), (int(entrada_parte[3]), int(entrada_parte[4]))]
+        dict_partes[entrada_parte[0]] = (entrada_parte[1], int(
+            entrada_parte[2]), (int(entrada_parte[3]), int(entrada_parte[4])))
 
     return dict_partes
 
 
 def combate(lista_monstro: list)-> tuple:
-    '''Função em que a Aloy ataca o monstro e retorna a vida do monstro resultante, o monstro atacado, a flecha usada,se acertou crítico ou não e o ponto de crítico'''
+    '''
+   Função que lê o ataque da aloy e aplica esse ataque ao alvo.
 
-    monstro_atacado, parte, flecha_usada, x, y = input().split(', ')
+   Parâmetros:
+   -lista_monstro: lista de monstros da rodada, ou seja, todos os monstos que a aloy pode atacar.
+
+   Retorno:
+   -Tupla:
+
+   -vida do monstro depois de receber o ataque
+   -índice do monstro atacado
+   -flecha usada para atacar o monstro
+   -um booleano que diz se a aloy acertou um crítico ou não
+   -o ponto que a aloy acertou 
+        
+    '''
+
+    monstro_atacado, parte, flecha_usada, x, y = input().split(', ')  #Recebe o ataque da aloy
     monstro_atacado = int(monstro_atacado)
     ponto = (int(x), int(y))
     monstro = lista_monstro[monstro_atacado]
@@ -144,6 +205,16 @@ def combate(lista_monstro: list)-> tuple:
 
 
 def monstro_ataca_aloy(lista_monstro):
+    '''
+    Função que faz com que os monstros da rodada ataque a aloy se eles estiverem vivos
+
+    Parâmetros:
+    -lista_monstro: lista de monstros da rodada, que podem atacar a aloy.
+
+    Retorno:
+    -total de dano que a aloy vai tomar
+    
+    '''
     total_dano = 0
     for maquina in lista_monstro:
         if maquina.vida_monstro > 0:
@@ -206,18 +277,25 @@ def main():
                     
             if len(lista_monstros_mortos) == len(lista_monstros):
                 print(f'Vida após o combate = {aloy.vida}')
-                aloy.recuperar_vida()
+                aloy.recuperar_vida()   
                 print('Flechas utilizadas:')
-                for k, v in quantidade_flechas_usadas.items():
-                    print(f'- {k}: {v}/{flechas_copia[k]}')
+                for k, v in flechas_copia.items():
+                    if k in quantidade_flechas_usadas:
+                        print(f'- {k}: {quantidade_flechas_usadas[k]}/{flechas_copia[k]}')
 
-
-                if len(dict_criticos.values()) != 0: 
+            
+                if len(dict_criticos) != 0: 
                     print('Críticos acertados:')
-                    for monstro in dict_criticos.keys():
-                        print(f'Máquina {monstro}:')
-                        for ponto in dict_criticos[monstro_atacado].keys():
-                            print(f'- {ponto}: {dict_criticos[monstro_atacado][ponto]}x')
+                    for indice_monstro in range(len(lista_monstros)):
+                            if indice_monstro not in dict_criticos:
+                                continue
+                            
+                            print(f'Máquina {indice_monstro}:')
+                            monstro = lista_monstros[indice_monstro]
+                            for parte in monstro.partes:
+                                ponto = monstro.partes[parte][2]
+                                if ponto in dict_criticos[indice_monstro]:
+                                    print(f'- {ponto}: {dict_criticos[indice_monstro][ponto]}x')
                             
                 
                 aloy.flechas = flechas_copia.copy()

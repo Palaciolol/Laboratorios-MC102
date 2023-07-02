@@ -1,0 +1,26 @@
+Jogador 1
+Mão: KO QE 2C
+Jogador 2
+Mão: 2P 2E AO
+Jogador 3
+Mão: AP AC AE
+Pilha:
+[Jogador 1] 1 carta(s) 2
+Pilha: 2C
+[Jogador 2] 2 carta(s) 2
+Pilha: 2C 2E 2P
+[Jogador 3] 3 carta(s) 2
+Pilha: 2C 2E 2P AE AC AP
+Jogador 1 duvidou.
+Jogador 1
+Mão: KO QE
+Jogador 2
+Mão: AO
+Jogador 3
+Mão: 2P 2C 2E AP AC AE
+Pilha:
+[Jogador 1] 1 carta(s) Q
+Pilha: QE
+[Jogador 2] 1 carta(s) Q
+Pilha: QE AO
+Jogador 2 é o vencedor!
