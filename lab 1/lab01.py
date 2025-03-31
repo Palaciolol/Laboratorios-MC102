@@ -63,3 +63,5 @@ if (Escolha_Sheila == 'spock'):
         print('Jornada n    as Estrelas')
     if (Escolha_Reginaldo == 'spock'):
         print('empate')
+x = 2
+y = 'oiii'
