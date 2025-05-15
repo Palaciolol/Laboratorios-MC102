@@ -28,17 +28,3 @@ Ao longo da disciplina, explorei os principais conceitos da linguagem Python, in
 - ✅ Introdução à depuração e testes
 
 ---
-
-## 📂 Organização do repositório
-
-Os projetos estão organizados em pastas de acordo com o tema ou exercício proposto na disciplina. Cada pasta contém os arquivos `.py` com os códigos-fonte e, quando necessário, arquivos de entrada/saída para teste.
-
----
-
-## 🚀 Começando
-
-Para executar os códigos, é necessário ter o [Python 3](https://www.python.org/downloads/) instalado.
-
-```bash
-# Exemplo de execução
-python3 nome_do_arquivo.py
